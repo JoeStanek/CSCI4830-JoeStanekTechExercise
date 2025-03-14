@@ -1,10 +1,10 @@
 from django import forms
-from .models import contact
+from .models import Task
 
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['id','Task']
+        fields = ['id','task']
 
         widgets = {
             'Task': forms.TextInput(attrs={
