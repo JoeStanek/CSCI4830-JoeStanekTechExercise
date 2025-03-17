@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class = "Links">
+    <a href="{% url 'front_page'%}">Home</a>
+    <a href="{% url 'view_task'%}">View Tasks</a>
+    <a href="{% url 'add_task'%}">Add Task</a>
+    <a href="{% url 'edit_task'%}">Edit Tasks</a>
+    <a href="{% url 'about_page'%}">About</a>
+
+
+    
+</div>
+
+<div class = "Header">
+    <h1>About the app</h1>
+    <h2>This app is meant to help me keep track of any potential assignments, appointments, or dates that may come up in my life from time to time.</h2>
+</div>
+
+
+{% endblock %}

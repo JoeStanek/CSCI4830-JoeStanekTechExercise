@@ -5,8 +5,11 @@ from .models import Task
 from .forms import TaskForm
 # Create your views here.
 
-def front_page():
-    pass
+def front_page(request):
+    return render(request, "front_page.html")
+
+def about_page(request):
+    return render(request, "about_page.html")
 
 def view_task():
     pass
