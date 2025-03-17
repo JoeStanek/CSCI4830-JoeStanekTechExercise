@@ -6,7 +6,7 @@ from .forms import TaskForm
 # Create your views here.
 
 def front_page(request):
-    return render(request, "front_page.html")
+    return render(request, "front_page_css.html")
 
 def about_page(request):
     return render(request, "about_page.html")
