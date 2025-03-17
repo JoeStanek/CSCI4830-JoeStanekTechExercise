@@ -1,7 +1,14 @@
-{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<div class = "Links">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+
+<div class="Links">
     <a href="{% url 'front_page'%}">Home</a>
     <a href="{% url 'view_task'%}">View Tasks</a>
     <a href="{% url 'add_task'%}">Add Task</a>
@@ -9,13 +16,29 @@
     <a href="{% url 'about_page'%}">About</a>
 
 
-    
-</div>
-
-<div class = "Header">
-    <h1>About the app</h1>
-    <h2>This app is meant to help me keep track of any potential assignments, appointments, or dates that may come up in my life from time to time.</h2>
 </div>
 
 
-{% endblock %}
+<body>
+    <div>
+        <h1>About the app.</h1>
+        <p>
+            This app is here to help me track any potential assignments,
+            appointments, or important dates and more!
+        </p>
+
+        <p>
+            This app was made by Josef Stanek for the CSCI4380 class at UNO
+        </p>
+        <p>Using this app you are able to:</p>
+        <ul>
+            <li>View a list of tasks youve added</li>
+            <li>Add tasks to your todo list</li>
+            <li>Edit and/or remove those tasks from your list</li>
+        </ul>
+        
+    </div>
+</body>
+
+
+</html>
