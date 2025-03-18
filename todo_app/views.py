@@ -11,8 +11,30 @@ def front_page(request):
 def about_page(request):
     return render(request, "about_page.html")
 
-def view_task():
-    pass
+def view_task(request):
+    page_number = request.GET.get("page",1)
+    task = request.GET.get("task","").strip()
+    date = request.GET.get("date","").strip()
+
+    if request.method == "POST":
+        task = request.POST.get("task","").strip()
+        date = request.POST.get("date","").strip()
+        page_number = 1
+    
+    if task or date:
+        tasks = Task.object.filter(task_icontains=task, date_icontains=date)
+    else:
+        tasks = Task.objects.all()
+    
+    paginator = Paginator(tasks,10)
+    page_obj = paginator.get_page(page_number)
+
+    return render(
+        request, "view_tasks.html",
+        {"tasks":page_obj,
+         "task_query": task,
+         "date_query": date},
+    )
 
 def add_task(request):
     success = False
