@@ -14,7 +14,7 @@
         <a href="{% url 'front_page'%}" class="text-dark mx-3">Home</a>
         <a href="{% url 'view_task'%}" class="text-dark mx-3">View Tasks</a>
         <a href="{% url 'add_task'%}" class="text-dark mx-3">Add Task</a>
-        <a href="{% url 'edit_task'%}" class="text-dark mx-3">Edit Tasks</a>
+        <a href="{% url 'edit_task' 0 1%}" class="text-dark mx-3">Edit Tasks</a>
         <a href="{% url 'about_page'%}" class="text-dark mx-3">About</a>
     </div>
 
@@ -32,6 +32,15 @@
         </div>
 
     </div>
+
+    {% if success%}
+    <div class="container rounded mt-5 border text-align-center bg-light shadow-sm">
+        <p><strong>Successfully added task!</strong></p>
+        <p><strong>Task: </strong>{{added_task.task}}</p>
+        <p><strong>Date: </strong>{{added_task.date}}</p>
+    </div>
+    {% endif %}
+
 
     <!--Need to add success after view tasks is implemented-->
 

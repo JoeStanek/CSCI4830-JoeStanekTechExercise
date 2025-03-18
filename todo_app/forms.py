@@ -15,7 +15,7 @@ class TaskForm(forms.ModelForm):
 
             'Date': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter deadline',
+                'placeholder': 'Enter date',
                 
             })
         }
