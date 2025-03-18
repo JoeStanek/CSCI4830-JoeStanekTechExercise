@@ -31,13 +31,13 @@
                 <input type="text" id="date" name="date" value="{{date_query}}" />
             </div>
 
-            <button type="submit" class="rounded bg-primary mt-2 mb-2 text-white">Search Task</button>
+            <button type="submit" class="mt-2 rounded btn btn-primary mb-2">Search Task</button>
         </form>
     </div>
 
     {% if tasks %}
-        <div class = "container-fluid border mt-4 bg-light rounded" style="width: 1500px;">
-            <h2>Results</h2>
+        <div class = "container-fluid border mt-4 bg-light rounded" style="width: 1500px; height: 550px;">
+            <h2 style="text-align: center;">Results</h2>
             {%if task_query or date_query%}
             <p><strong>Queries: </strong>{{task_query}} , {{date_query}}</p>
             {%endif%}
@@ -54,7 +54,40 @@
                 </li>
                 {% endfor %}
             </ul>
+
+            <nav aria-label="Page Navigation" class="mt-4">
+                <ul class="pagination justify-content-center>">
+                    {% if tasks.has_previous %}
+
+                    <li class="page_item">
+                        <a class="page-link" href="?page=1&task={{task_query}}&date={{date_query}}">First</a>
+                    </li>
+
+                    <li class="page_item">
+                        <a class="page-link" href="?page={{tasks.previous_page_number}}&task={{task_query}}&date={{date_query}}">Previous</a>
+                    </li> 
+                    {% endif %}
+
+                    <li class="page-item active">
+                        <span class="page-link">Page {{tasks.number}} of {{tasks.paginator.num_pages}}</span>
+                    </li>
+
+                    {% if tasks.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{tasks.next_page_number}}&tasks={{task_query}}&date={{date_query}}">Next</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{tasks.paginator.num_pages}}&task={{task_query}}&date={{date_query}}">Last</a>
+                    </li>
+                    {% endif %}
+
+
+                </ul>
+            </nav>
         </div>
+    {% elif request.method == 'POST' %}
+    <div class="alert alert-warning mt4" role="alert">No tasks found, try again.</div>
 
     {% endif %}
 </body>

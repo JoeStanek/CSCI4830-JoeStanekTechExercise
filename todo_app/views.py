@@ -59,19 +59,20 @@ def add_task(request):
     )
 
 
-def edit_task(request, contact_id, page_number):
+def edit_task(request, task_id, page_number):
     success = False
 
     if request.method=="POST":
         entry = Task.objects.get(id=task_id)
         task = request.POST.get("task")
         date = request.POST.get("date")
+
+        if entry.task != task or entry.date != date:
+            entry.task = task
+            entry.date = date
+            entry.save()
+            success = True
     
-    if entry.task != task or entry.date != date:
-        entry.task = task
-        entry.date = date
-        entry.save()
-        success = True
 
     task_list = Task.objects.all()
     paginator = Paginator(task_list,10)
@@ -87,5 +88,9 @@ def edit_task(request, contact_id, page_number):
         }
     )
 
-def delete_task():
-    pass
+def delete_task(request, task_id, page_number):
+    if request.method=="POST":
+        task = get_object_or_404(Task,id=task_id)
+        task.delete()
+
+        return redirect("edit_task", task_id=task_id, page_number=page_number)
