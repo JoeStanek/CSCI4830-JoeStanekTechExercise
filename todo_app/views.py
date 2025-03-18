@@ -15,7 +15,6 @@ def view_task():
     pass
 
 def add_task(request):
-    print("[DBG] add_task called.")
     success = False
     added_task = None
     if request.method == "POST":
@@ -29,13 +28,13 @@ def add_task(request):
                 "add_task.html",
                 {"form":form, "added_task":added_task, "success":success},
             )
-        else:
-            form = TaskForm()
-        return render(
-            request,
-            "add_task.html",
-            {"form":form, "added_task":added_task, "success":success}
-        )
+    else:
+        form = TaskForm()
+    return render(
+        request,
+        "add_task.html",
+        {"form":form, "added_task":added_task, "success":success},
+    )
 
 
 def edit_task():
