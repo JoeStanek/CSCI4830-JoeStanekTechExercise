@@ -13,7 +13,7 @@ class TaskForm(forms.ModelForm):
                 
             }),
 
-            'Deadline': forms.TextInput(attrs={
+            'Date': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Enter deadline',
                 

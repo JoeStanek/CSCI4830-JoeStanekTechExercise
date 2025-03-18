@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="bg-info text-center py-3">
+    <div class="shadow-sm bg-info text-center py-3 ">
         <a href="{% url 'front_page'%}" class="text-dark mx-3">Home</a>
         <a href="{% url 'view_task'%}" class="text-dark mx-3">View Tasks</a>
         <a href="{% url 'add_task'%}" class="text-dark mx-3">Add Task</a>
@@ -18,11 +18,11 @@
         <a href="{% url 'about_page'%}" class="text-dark mx-3">About</a>
     </div>
 
-    <div class="d-flex text-align-center">
-        <div class="container mt-5 bg-light rounded">
+    <div class="container mt-5 border text-align-center bg-light shadow-sm rounded">
+        <div class="bg-light rounded">
             <h1>Add a task using the box below.</h1>
             <form method="POST">
-                <div class="col">
+                <div class="mb-2">
                     {% csrf_token %}
 
                     {{form.as_p}}
@@ -32,5 +32,7 @@
         </div>
 
     </div>
+
+    <!--Need to add success after view tasks is implemented-->
 
 </body>
