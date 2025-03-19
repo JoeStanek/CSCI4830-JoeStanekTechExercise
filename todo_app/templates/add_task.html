@@ -18,24 +18,29 @@
         <a href="{% url 'about_page'%}" class="text-dark mx-3">About</a>
     </div>
 
-    <div class="container mt-5 border text-align-center bg-light shadow-sm rounded">
+    <div class="container mt-5 border text-align-center bg-light shadow-sm rounded"  style="width: 650px;">
         <div class="bg-light rounded">
-            <h1>Add a task using the box below.</h1>
+            <h1>Add a task using the inputs below.</h1>
             <form method="POST">
-                <div class="mb-2">
-                    {% csrf_token %}
-
-                    {{form.as_p}}
-                    <button type="submit" class="btn btn-primary rounded">Add Task</button>
+                {% csrf_token %}
+                <div>
+                    <label for="task">Task:</label>
+                    <input class="rounded mb-2" type="text" id="task" name="task" value="{{task_query}}" />
                 </div>
+                <div>
+                    <label for="date">Date:</label>
+                    <input class="rounded mb-2" type="text" id="date" name="date" value="{{date_query}}" />
+                </div>
+    
+                <button type="submit" class="btn btn-primary rounded mb-2 shadow">Add Task</button>
             </form>
         </div>
 
     </div>
 
     {% if success%}
-    <div class="container rounded mt-5 border text-align-center bg-light shadow-sm">
-        <p><strong>Successfully added task!</strong></p>
+    <div class="container-fluid rounded mt-5 border text-align-center bg-light shadow-sm" style="width: 400px;">
+        <p style="text-align: center;"><strong>Successfully added task!</strong></p>
         <p><strong>Task: </strong>{{added_task.task}}</p>
         <p><strong>Date: </strong>{{added_task.date}}</p>
     </div>
