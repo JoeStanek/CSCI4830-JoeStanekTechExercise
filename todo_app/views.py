@@ -92,5 +92,6 @@ def delete_task(request, task_id, page_number):
     if request.method=="POST":
         task = get_object_or_404(Task,id=task_id)
         task.delete()
+        
 
         return redirect("edit_task", task_id=task_id, page_number=page_number)
